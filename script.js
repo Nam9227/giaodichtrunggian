@@ -3,8 +3,7 @@ window.onload = function() {
   if (!localStorage.getItem('admin')) {
     const adminUser = {
       username: 'admin',
-      password: 'admin922007', // Mật khẩu mặc định cho tài khoản admin
-      role: 'admin'
+      password: 'admin922007' // Mật khẩu mặc định cho tài khoản admin
     };
     localStorage.setItem('admin', JSON.stringify(adminUser));
     console.log('Tài khoản admin mặc định đã được tạo.');
@@ -30,13 +29,11 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
   
   const username = document.getElementById('new-username').value;
   const password = document.getElementById('new-password').value;
-  const isAdmin = document.getElementById('is-admin').checked;
 
   if(username && password) {
     const user = {
       username: username,
-      password: password,
-      role: isAdmin ? 'admin' : 'user'
+      password: password
     };
 
     // Lưu tài khoản vào localStorage
@@ -61,15 +58,9 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   const storedUser = JSON.parse(localStorage.getItem(username));
 
   if(storedUser && password === storedUser.password) {
-    if(storedUser.role === 'admin') {
-      alert('Đăng nhập thành công với tư cách Admin!');
-      // Điều hướng đến trang admin
-      window.location.href = 'admin.html';
-    } else {
-      alert('Đăng nhập thành công!');
-      // Điều hướng đến trang chính
-      window.location.href = 'index.html';
-    }
+    alert('Đăng nhập thành công!');
+    // Điều hướng đến trang chính
+    window.location.href = 'index.html';
   } else {
     alert('Tên đăng nhập hoặc mật khẩu không đúng.');
   }
