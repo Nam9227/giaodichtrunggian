@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập hoặc Đăng ký</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="images/logo.png" alt="Logo Giao Dịch Trung Gian 1s" class="logo">
+    </div>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <h2>Đăng nhập</h2>
+      <form id="login-form">
+        <label for="username">Tên đăng nhập:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Đăng nhập</button>
+      </form>
+
+      <p>Chưa có tài khoản? <a href="#" id="show-register">Đăng ký</a></p>
+      
+      <h2>Đăng ký</h2>
+      <form id="register-form" style="display: none;">
+        <label for="new-username">Tên đăng nhập:</label>
+        <input type="text" id="new-username" name="new-username" required>
+        
+        <label for="new-password">Mật khẩu:</label>
+        <input type="password" id="new-password" name="new-password" required>
+        
+        <button type="submit">Đăng ký</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Giao Dịch Trung Gian 1s. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
