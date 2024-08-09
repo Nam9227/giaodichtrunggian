@@ -1,137 +1,83 @@
-/* Đặt font và màu nền chung cho toàn bộ trang */
+/* Toàn bộ trang */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
-  background-color: #f0f4f8;
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container chứa form */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card chứa form */
+.auth-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-card h1 {
+  margin-top: 0;
+  font-size: 28px;
   color: #333;
 }
 
-/* Định dạng cho header */
-header {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: #fff;
-  padding: 20px 0;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-header .container {
+.auth-card form {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
+  flex-direction: column;
 }
 
-header .logo {
-  width: 120px;
-  border-radius: 20px;
+.auth-card label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
 }
 
-header nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-header nav ul li {
-  margin-left: 20px;
-}
-
-header nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 20px;
-  transition: background-color 0.3s ease;
-}
-
-header nav ul li a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Định dạng cho nội dung chính */
-main {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-main section {
-  margin-bottom: 60px;
-  padding: 20px;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-main h1, main h2 {
-  color: #4A5568;
-}
-
-main p {
-  color: #718096;
-  font-size: 1.1em;
-}
-
-/* Định dạng cho form đăng nhập/đăng ký */
-.form-container {
-  max-width: 400px;
-  margin: auto;
-  padding: 30px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-form label {
-  display: block;
-  margin-bottom: 10px;
-  color: #2D3748;
-}
-
-form input {
-  width: 100%;
+.auth-card input {
   padding: 12px;
   margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  transition: border-color 0.3s ease;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
 }
 
-form input:focus {
-  border-color: #667eea;
-}
-
-form button {
-  background-color: #667eea;
-  color: #fff;
-  padding: 12px 20px;
+.auth-card button {
+  padding: 12px;
+  background: #007bff;
   border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-form button:hover {
-  background-color: #764ba2;
-}
-
-/* Định dạng cho footer */
-footer {
-  background-color: #667eea;
+  border-radius: 5px;
   color: #fff;
-  padding: 20px 0;
-  text-align: center;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.auth-card button:hover {
+  background: #0056b3;
+}
+
+.auth-card p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.auth-card p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.auth-card p a:hover {
+  text-decoration: underline;
 }
