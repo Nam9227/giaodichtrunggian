@@ -1,3 +1,16 @@
+// Tạo tài khoản admin mặc định nếu chưa tồn tại
+window.onload = function() {
+  if (!localStorage.getItem('admin')) {
+    const adminUser = {
+      username: 'admin',
+      password: 'admin922007', // Mật khẩu mặc định cho tài khoản admin
+      role: 'admin'
+    };
+    localStorage.setItem('admin', JSON.stringify(adminUser));
+    console.log('Tài khoản admin mặc định đã được tạo.');
+  }
+};
+
 // Chuyển đổi giữa form đăng nhập và đăng ký
 document.getElementById('show-register').addEventListener('click', function(e) {
   e.preventDefault();
@@ -27,7 +40,7 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
     };
 
     // Lưu tài khoản vào localStorage
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem(username, JSON.stringify(user));
     alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
     
     // Chuyển đến form đăng nhập
@@ -45,9 +58,9 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const storedUser = JSON.parse(localStorage.getItem(username));
 
-  if(storedUser && username === storedUser.username && password === storedUser.password) {
+  if(storedUser && password === storedUser.password) {
     if(storedUser.role === 'admin') {
       alert('Đăng nhập thành công với tư cách Admin!');
       // Điều hướng đến trang admin
