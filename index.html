@@ -24,17 +24,20 @@
 
   <!-- Nội dung chính -->
   <main>
-    <section id="home">
-      <h1>Chào mừng đến với Giao Dịch Trung Gian 1s</h1>
-      <p>Chúng tôi cung cấp dịch vụ giao dịch trung gian nhanh chóng và an toàn.</p>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Chào mừng đến với Giao Dịch Trung Gian 1s</h1>
+        <p>Chúng tôi cung cấp dịch vụ giao dịch trung gian nhanh chóng và an toàn.</p>
+        <a href="#contact" class="btn-primary">Liên hệ với chúng tôi</a>
+      </div>
     </section>
 
-    <section id="about">
+    <section id="about" class="about">
       <h2>Về chúng tôi</h2>
       <p>Giao Dịch Trung Gian 1s là một nền tảng uy tín giúp bạn thực hiện giao dịch nhanh chóng và an toàn.</p>
     </section>
 
-    <section id="services">
+    <section id="services" class="services">
       <h2>Dịch vụ của chúng tôi</h2>
       <ul>
         <li>Trung gian mua bán</li>
@@ -43,17 +46,17 @@
       </ul>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="contact">
       <h2>Liên hệ với chúng tôi</h2>
       <form>
         <label for="name">Tên của bạn:</label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" required>
         
         <label for="email">Email của bạn:</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" required>
         
         <label for="message">Tin nhắn:</label>
-        <textarea id="message" name="message"></textarea>
+        <textarea id="message" name="message" required></textarea>
         
         <button type="submit">Gửi tin nhắn</button>
       </form>
