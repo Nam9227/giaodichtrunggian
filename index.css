@@ -1,18 +1,20 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
 }
 
 header {
-    background-color: #333;
+    background-color: #1e88e5;
     color: #fff;
-    padding: 10px 0;
+    padding: 15px 0;
+    border-radius: 0 0 15px 15px;
 }
 
 header .logo img {
     max-width: 150px;
+    border-radius: 10px;
 }
 
 nav ul {
@@ -30,10 +32,19 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 25px;
+    background-color: #42a5f5;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #1e88e5;
 }
 
 .hero {
-    background-image: url('hero-background.jpg');
+    background-image: url('images/hero-background.jpg');
     background-size: cover;
     background-position: center;
     height: 80vh;
@@ -42,38 +53,48 @@ nav ul li a {
     align-items: center;
     text-align: center;
     color: #fff;
+    border-radius: 15px;
+    margin: 20px;
 }
 
 .hero-content {
     max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
 }
 
 .hero-content h1 {
     font-size: 3em;
     margin-bottom: 20px;
+    color: #1e88e5;
 }
 
 .hero-content p {
     font-size: 1.2em;
     margin-bottom: 30px;
+    color: #666;
 }
 
 .cta-button {
-    background-color: #ff6f61;
+    background-color: #f4511e;
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 25px;
     text-decoration: none;
     font-size: 1.2em;
-    border-radius: 5px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
-    background-color: #ff4a3a;
+    background-color: #e64a19;
 }
 
 footer {
-    background-color: #333;
+    background-color: #1e88e5;
     color: #fff;
     text-align: center;
     padding: 10px 0;
+    border-radius: 15px 15px 0 0;
+    margin-top: 20px;
 }
