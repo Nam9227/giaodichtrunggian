@@ -21,8 +21,13 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
 
   if (storedUser && password === storedUser.password) {
     alert('Đăng nhập thành công!');
-    // Điều hướng đến trang chính
-    window.location.href = 'index.html'; // Đảm bảo rằng đường dẫn là chính xác
+    if (username === 'admin') {
+      // Điều hướng đến trang quản trị
+      window.location.href = 'admin.html'; // Đảm bảo rằng đường dẫn là chính xác
+    } else {
+      // Điều hướng đến trang chính
+      window.location.href = 'index.html';
+    }
   } else {
     alert('Tên đăng nhập hoặc mật khẩu không đúng.');
   }
