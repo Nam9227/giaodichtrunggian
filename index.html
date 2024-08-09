@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Giao Dịch Trung Gian 1s</title>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Header với logo và menu điều hướng -->
@@ -16,6 +16,8 @@
           <li><a href="#home">Trang chủ</a></li>
           <li><a href="#about">Giới thiệu</a></li>
           <li><a href="#services">Dịch vụ</a></li>
+          <li><a href="#signup">Đăng ký</a></li>
+          <li><a href="#login">Đăng nhập</a></li>
           <li><a href="#contact">Liên hệ</a></li>
         </ul>
       </nav>
@@ -24,19 +26,19 @@
 
   <!-- Nội dung chính -->
   <main>
+    <!-- Phần giới thiệu -->
     <section id="home" class="hero">
-      <div class="hero-content">
-        <h1>Chào mừng đến với Giao Dịch Trung Gian 1s</h1>
-        <p>Chúng tôi cung cấp dịch vụ giao dịch trung gian nhanh chóng và an toàn.</p>
-        <a href="#contact" class="btn-primary">Liên hệ với chúng tôi</a>
-      </div>
+      <h1>Chào mừng đến với Giao Dịch Trung Gian 1s</h1>
+      <p>Chúng tôi cung cấp dịch vụ giao dịch trung gian nhanh chóng và an toàn.</p>
     </section>
 
+    <!-- Giới thiệu về dịch vụ -->
     <section id="about" class="about">
-      <h2>Về chúng tôi</h2>
+      <h2>Giới thiệu về dịch vụ</h2>
       <p>Giao Dịch Trung Gian 1s là một nền tảng uy tín giúp bạn thực hiện giao dịch nhanh chóng và an toàn.</p>
     </section>
 
+    <!-- Dịch vụ -->
     <section id="services" class="services">
       <h2>Dịch vụ của chúng tôi</h2>
       <ul>
@@ -46,17 +48,49 @@
       </ul>
     </section>
 
+    <!-- Đăng ký -->
+    <section id="signup" class="auth-section">
+      <h2>Đăng ký</h2>
+      <form>
+        <label for="signup-name">Tên của bạn:</label>
+        <input type="text" id="signup-name" name="name" required>
+        
+        <label for="signup-email">Email của bạn:</label>
+        <input type="email" id="signup-email" name="email" required>
+        
+        <label for="signup-password">Mật khẩu:</label>
+        <input type="password" id="signup-password" name="password" required>
+        
+        <button type="submit">Đăng ký</button>
+      </form>
+    </section>
+
+    <!-- Đăng nhập -->
+    <section id="login" class="auth-section">
+      <h2>Đăng nhập</h2>
+      <form>
+        <label for="login-email">Email của bạn:</label>
+        <input type="email" id="login-email" name="email" required>
+        
+        <label for="login-password">Mật khẩu:</label>
+        <input type="password" id="login-password" name="password" required>
+        
+        <button type="submit">Đăng nhập</button>
+      </form>
+    </section>
+
+    <!-- Liên hệ -->
     <section id="contact" class="contact">
       <h2>Liên hệ với chúng tôi</h2>
       <form>
-        <label for="name">Tên của bạn:</label>
-        <input type="text" id="name" name="name" required>
+        <label for="contact-name">Tên của bạn:</label>
+        <input type="text" id="contact-name" name="name" required>
         
-        <label for="email">Email của bạn:</label>
-        <input type="email" id="email" name="email" required>
+        <label for="contact-email">Email của bạn:</label>
+        <input type="email" id="contact-email" name="email" required>
         
-        <label for="message">Tin nhắn:</label>
-        <textarea id="message" name="message" required></textarea>
+        <label for="contact-message">Tin nhắn:</label>
+        <textarea id="contact-message" name="message" required></textarea>
         
         <button type="submit">Gửi tin nhắn</button>
       </form>
