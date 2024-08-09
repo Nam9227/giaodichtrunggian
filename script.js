@@ -1,5 +1,12 @@
-// Thêm chức năng xử lý sự kiện cho form (ví dụ đơn giản)
-document.querySelector('form').addEventListener('submit', function(e) {
-  e.preventDefault(); // Ngăn chặn việc gửi form để xử lý logic tùy chỉnh
-  alert('Tin nhắn của bạn đã được gửi. Cảm ơn bạn!');
+// Chuyển đổi giữa form đăng nhập và đăng ký
+document.getElementById('show-register').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('login-form').style.display = 'none';
+  document.getElementById('register-form').style.display = 'block';
+});
+
+document.getElementById('show-login').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('register-form').style.display = 'none';
+  document.getElementById('login-form').style.display = 'block';
 });
