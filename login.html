@@ -7,32 +7,22 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <img src="images/logo.jpg" alt="Logo Giao Dịch Trung Gian 1s" class="logo">
+  <div class="auth-container">
+    <div class="auth-card" id="login-form">
       <h1>Đăng Nhập</h1>
+      <form>
+        <label for="username">Tên đăng nhập:</label>
+        <input type="text" id="username" name="username" placeholder="Tên đăng nhập" required>
+        
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+        
+        <button type="submit">Đăng nhập</button>
+        <p>Chưa có tài khoản? <a href="register.html" id="show-register">Đăng ký ngay</a></p>
+      </form>
     </div>
-  </header>
+  </div>
 
-  <main>
-    <form id="login-form">
-      <label for="username">Tên đăng nhập:</label>
-      <input type="text" id="username" name="username" required>
-      
-      <label for="password">Mật khẩu:</label>
-      <input type="password" id="password" name="password" required>
-      
-      <button type="submit">Đăng nhập</button>
-      <a href="register.html" id="show-register">Đăng ký</a>
-    </form>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 Giao Dịch Trung Gian 1s. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="login.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
