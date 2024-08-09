@@ -62,21 +62,21 @@ main h1, main h2 {
   color: #333;
 }
 
-/* Định dạng cho footer */
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 0;
-  text-align: center;
+/* Định dạng cho form đăng nhập/đăng ký */
+.form-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
 
-/* Định dạng cho các form */
 form label {
   display: block;
   margin-bottom: 5px;
 }
 
-form input, form textarea {
+form input {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -94,4 +94,12 @@ form button {
 
 form button:hover {
   background-color: #555;
+}
+
+/* Định dạng cho footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
 }
