@@ -11,20 +11,20 @@ window.onload = function() {
 };
 
 // Chuyển đổi giữa form đăng nhập và đăng ký
-document.getElementById('show-register').addEventListener('click', function(e) {
+document.getElementById('show-register')?.addEventListener('click', function(e) {
   e.preventDefault();
-  document.getElementById('login-form').style.display = 'none';
-  document.getElementById('register-form').style.display = 'block';
+  document.getElementById('login-form')?.style.display = 'none';
+  document.getElementById('register-form')?.style.display = 'block';
 });
 
-document.getElementById('show-login').addEventListener('click', function(e) {
+document.getElementById('show-login')?.addEventListener('click', function(e) {
   e.preventDefault();
-  document.getElementById('register-form').style.display = 'none';
-  document.getElementById('login-form').style.display = 'block';
+  document.getElementById('register-form')?.style.display = 'none';
+  document.getElementById('login-form')?.style.display = 'block';
 });
 
 // Xử lý đăng ký
-document.getElementById('register-form').addEventListener('submit', function(e) {
+document.getElementById('register-form')?.addEventListener('submit', function(e) {
   e.preventDefault();
   
   const username = document.getElementById('new-username').value;
@@ -49,7 +49,7 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
 });
 
 // Xử lý đăng nhập
-document.getElementById('login-form').addEventListener('submit', function(e) {
+document.getElementById('login-form')?.addEventListener('submit', function(e) {
   e.preventDefault();
   
   const username = document.getElementById('username').value;
@@ -57,10 +57,15 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
 
   const storedUser = JSON.parse(localStorage.getItem(username));
 
-  if(storedUser && password === storedUser.password) {
+  if (storedUser && password === storedUser.password) {
     alert('Đăng nhập thành công!');
-    // Điều hướng đến trang chính
-    window.location.href = 'index.html';
+    if (username === 'admin') {
+      // Điều hướng đến trang quản trị
+      window.location.href = 'admin.html'; // Đảm bảo rằng đường dẫn là chính xác
+    } else {
+      // Điều hướng đến trang chính
+      window.location.href = 'index.html';
+    }
   } else {
     alert('Tên đăng nhập hoặc mật khẩu không đúng.');
   }
