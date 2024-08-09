@@ -19,10 +19,15 @@ header .logo {
     height: 50px;
 }
 
+header nav {
+    display: flex;
+}
+
 header nav a {
     color: #fff;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 15px;
+    font-weight: bold;
 }
 
 header nav a:hover {
@@ -35,6 +40,7 @@ main {
 
 .hero {
     text-align: center;
+    margin: 20px 0;
 }
 
 .hero h1 {
@@ -44,6 +50,7 @@ main {
 
 .hero p {
     font-size: 1.2em;
+    color: #555;
 }
 
 .hero button {
@@ -53,10 +60,40 @@ main {
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
 .hero button:hover {
     background-color: #0056b3;
+}
+
+.services {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.services h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.service-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    display: inline-block;
+    width: 30%;
+}
+
+.service-item h3 {
+    margin: 0 0 10px;
+}
+
+.service-item p {
+    margin: 0;
 }
 
 footer {
