@@ -18,11 +18,11 @@ header {
     background-color: #1e88e5;
     color: #fff;
     padding: 10px 0;
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 10px 10px;
 }
 
 header .logo img {
-    max-width: 100px;
+    max-width: 80px;
     border-radius: 10px;
 }
 
@@ -31,7 +31,7 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 nav ul li a {
@@ -39,7 +39,7 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     padding: 8px 15px;
-    border-radius: 25px;
+    border-radius: 20px;
     background-color: #42a5f5;
     transition: background-color 0.3s ease;
 }
@@ -52,42 +52,42 @@ nav ul li a:hover {
     background-image: url('images/hero-background.jpg');
     background-size: cover;
     background-position: center;
-    height: 70vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: #fff;
-    border-radius: 15px;
-    margin: 20px;
+    border-radius: 10px;
+    margin: 10px 20px;
 }
 
 .hero-content {
     max-width: 600px;
     background-color: rgba(255, 255, 255, 0.85);
-    padding: 20px;
-    border-radius: 15px;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 .hero-content h1 {
-    font-size: 2.5em;
-    margin-bottom: 15px;
+    font-size: 2.2em;
+    margin-bottom: 10px;
     color: #1e88e5;
 }
 
 .hero-content p {
-    font-size: 1.1em;
-    margin-bottom: 25px;
+    font-size: 1em;
+    margin-bottom: 20px;
     color: #666;
 }
 
 .cta-button {
     background-color: #f4511e;
     color: #fff;
-    padding: 10px 20px;
+    padding: 8px 20px;
     text-decoration: none;
     font-size: 1.1em;
-    border-radius: 25px;
+    border-radius: 20px;
     transition: background-color 0.3s ease;
 }
 
@@ -100,6 +100,6 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    border-radius: 15px 15px 0 0;
-    margin-top: 20px;
+    border-radius: 10px 10px 0 0;
+    margin-top: 10px;
 }
