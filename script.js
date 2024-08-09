@@ -1,5 +1,5 @@
-// Tạo tài khoản admin mặc định nếu chưa tồn tại
 window.onload = function() {
+  // Tạo tài khoản admin mặc định nếu chưa tồn tại
   if (!localStorage.getItem('admin')) {
     const adminUser = {
       username: 'admin',
