@@ -1,16 +1,21 @@
-/* Đặt font chung cho toàn bộ trang */
+/* Đặt font và màu nền chung cho toàn bộ trang */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  background-color: #f0f4f8;
+  color: #333;
 }
 
 /* Định dạng cho header */
 header {
-  background-color: #333;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: #fff;
-  padding: 10px 0;
+  padding: 20px 0;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header .container {
@@ -23,7 +28,8 @@ header .container {
 }
 
 header .logo {
-  width: 150px;
+  width: 120px;
+  border-radius: 20px;
 }
 
 header nav ul {
@@ -41,65 +47,91 @@ header nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
 }
 
 header nav ul li a:hover {
-  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Định dạng cho nội dung chính */
 main {
-  padding: 20px;
+  padding: 40px 20px;
   max-width: 1200px;
   margin: auto;
 }
 
 main section {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 main h1, main h2 {
-  color: #333;
+  color: #4A5568;
+}
+
+main p {
+  color: #718096;
+  font-size: 1.1em;
 }
 
 /* Định dạng cho form đăng nhập/đăng ký */
 .form-container {
   max-width: 400px;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 form label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  color: #2D3748;
 }
 
 form input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus {
+  border-color: #667eea;
 }
 
 form button {
-  background-color: #333;
+  background-color: #667eea;
   color: #fff;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border: none;
+  border-radius: 20px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 form button:hover {
-  background-color: #555;
+  background-color: #764ba2;
 }
 
 /* Định dạng cho footer */
 footer {
-  background-color: #333;
+  background-color: #667eea;
   color: #fff;
-  padding: 10px 0;
+  padding: 20px 0;
   text-align: center;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
 }
