@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    font-size: 16px;
 }
 
 header {
@@ -12,6 +13,7 @@ header {
     padding: 10px 0;
     text-align: center;
     position: relative;
+    border-radius: 0 0 10px 10px;
 }
 
 header .logo-container {
@@ -24,6 +26,7 @@ header .logo {
     width: 50px;
     height: auto;
     margin-right: 10px;
+    border-radius: 50%;
 }
 
 nav ul {
@@ -52,7 +55,7 @@ section {
     margin-bottom: 20px;
     background-color: white;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -62,6 +65,7 @@ section {
     text-align: center;
     padding: 50px 0;
     margin-bottom: 20px;
+    border-radius: 10px;
 }
 
 #banner h2 {
@@ -90,4 +94,5 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+    border-radius: 10px 10px 0 0;
 }
