@@ -1,38 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đăng Ký</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <div class="container">
-      <img src="images/logo.jpg" alt="Logo Giao Dịch Trung Gian 1s" class="logo">
-      <h1>Đăng Ký</h1>
-    </div>
-  </header>
+// Xử lý đăng ký
+document.getElementById('register-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const username = document.getElementById('new-username').value;
+  const password = document.getElementById('new-password').value;
 
-  <main>
-    <form id="register-form">
-      <label for="new-username">Tên đăng nhập:</label>
-      <input type="text" id="new-username" name="new-username" required>
-      
-      <label for="new-password">Mật khẩu:</label>
-      <input type="password" id="new-password" name="new-password" required>
+  if (username && password) {
+    const user = {
+      username: username,
+      password: password
+    };
 
-      <button type="submit">Đăng ký</button>
-      <a href="login.html" id="show-login">Quay lại Đăng nhập</a>
-    </form>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 Giao Dịch Trung Gian 1s. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="register.js"></script>
-</body>
-</html>
+    // Lưu tài khoản vào localStorage
+    localStorage.setItem(username, JSON.stringify(user));
+    alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
+    
+    // Chuyển đến form đăng nhập
+    window.location.href = 'login.html';
+  } else {
+    alert('Vui lòng nhập đầy đủ thông tin.');
+  }
+});
