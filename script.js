@@ -17,12 +17,19 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
   
   const username = document.getElementById('new-username').value;
   const password = document.getElementById('new-password').value;
+  const isAdmin = document.getElementById('is-admin').checked;
 
   if(username && password) {
+    const user = {
+      username: username,
+      password: password,
+      role: isAdmin ? 'admin' : 'user'
+    };
+
     // Lưu tài khoản vào localStorage
-    localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
+    localStorage.setItem('user', JSON.stringify(user));
     alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
+    
     // Chuyển đến form đăng nhập
     document.getElementById('register-form').style.display = 'none';
     document.getElementById('login-form').style.display = 'block';
@@ -38,13 +45,18 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  const storedUsername = localStorage.getItem('username');
-  const storedPassword = localStorage.getItem('password');
+  const storedUser = JSON.parse(localStorage.getItem('user'));
 
-  if(username === storedUsername && password === storedPassword) {
-    alert('Đăng nhập thành công!');
-    // Điều hướng đến trang chính
-    window.location.href = 'index.html';
+  if(storedUser && username === storedUser.username && password === storedUser.password) {
+    if(storedUser.role === 'admin') {
+      alert('Đăng nhập thành công với tư cách Admin!');
+      // Điều hướng đến trang admin
+      window.location.href = 'admin.html';
+    } else {
+      alert('Đăng nhập thành công!');
+      // Điều hướng đến trang chính
+      window.location.href = 'index.html';
+    }
   } else {
     alert('Tên đăng nhập hoặc mật khẩu không đúng.');
   }
