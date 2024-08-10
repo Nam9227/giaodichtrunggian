@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Đăng Ký</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Tải Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js"></script>
+  <!-- Import Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
 </head>
 <body>
   <div class="auth-container">
@@ -16,7 +17,7 @@
       <form>
         <label for="new-username">Tên đăng nhập:</label>
         <input type="text" id="new-username" name="new-username" placeholder="Tên đăng nhập" required>
-        
+  
         <label for="new-password">Mật khẩu:</label>
         <input type="password" id="new-password" name="new-password" placeholder="Mật khẩu" required>
 
@@ -29,7 +30,6 @@
     </div>
   </div>
 
-  <!-- Thêm script của bạn -->
   <script src="register.js"></script>
 </body>
 </html>
