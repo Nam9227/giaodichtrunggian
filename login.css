@@ -13,7 +13,7 @@ body {
 /* Header chứa logo */
 header {
   width: 100%;
-  padding: 10px 0; /* Giảm padding để logo nhỏ hơn */
+  padding: 20px 0; /* Thêm padding phía trên và dưới để đưa logo xuống một chút */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,81 +23,10 @@ header {
 header .logo {
   max-width: 80px; /* Giảm kích thước của logo */
   height: auto; /* Đảm bảo tỷ lệ của logo được giữ nguyên */
-  border: none; /* Loại bỏ border nếu có */
-  border-radius: 0; /* Loại bỏ bo góc nếu có */
+  border-radius: 10px; /* Bo góc logo */
+  border: 2px solid #ddd; /* Thêm đường viền để rõ ràng hơn */
 }
 
-/* Container chứa form */
-.auth-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1; /* Làm cho container chiếm toàn bộ không gian còn lại */
-}
-
-/* Card chứa form */
-.auth-card {
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
-
-.auth-card h1 {
-  margin-top: 0;
-  font-size: 28px;
-  color: #333;
-}
-
-.auth-card form {
-  display: flex;
-  flex-direction: column;
-}
-
-.auth-card label {
-  margin-bottom: 5px;
-  font-size: 14px;
-  color: #555;
-}
-
-.auth-card input {
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.auth-card button {
-  padding: 12px;
-  background: #007bff;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.auth-card button:hover {
-  background: #0056b3;
-}
-
-.auth-card p {
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-.auth-card p a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.auth-card p a:hover {
-  text-decoration: underline;
-}
 
 
 
