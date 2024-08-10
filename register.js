@@ -52,3 +52,15 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
     alert('Vui lòng nhập đầy đủ thông tin.');
   }
 });
+document.getElementById('toggle-password').addEventListener('click', function() {
+  const passwordField = document.getElementById('password');
+  const eyeIcon = document.getElementById('toggle-password');
+
+  if (passwordField.type === 'password') {
+    passwordField.type = 'text';
+    eyeIcon.src = 'images/mo.png'; // Hình ảnh con mắt mở
+  } else {
+    passwordField.type = 'password';
+    eyeIcon.src = 'images/dong.png'; // Hình ảnh con mắt đóng
+  }
+});
