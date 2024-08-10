@@ -18,7 +18,7 @@ const auth = firebase.auth();
 const database = firebase.database();
 
 // Handle registration
-document.getElementById('register-form').addEventListener('submit', function(e) {
+document.getElementById('register-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   
   const username = document.getElementById('new-username').value;
@@ -26,36 +26,31 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
   const email = document.getElementById('email').value;
 
   if (username && password && email) {
-    auth.createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log('Đăng ký thành công:', user);
+    try {
+      const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+      console.log('Đăng ký thành công:', user);
 
-        // Lưu thông tin người dùng (bao gồm cả mật khẩu mã hóa) vào Firebase Realtime Database
-        // Đây là cách tiếp cận không an toàn, vì vậy hãy thận trọng!
-        database.ref('users/' + username).set({
-          email: email,
-          password: password // Lưu mật khẩu không an toàn
-        }).then(() => {
-          alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
-          window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
-        }).catch((error) => {
-          console.error('Lỗi khi lưu dữ liệu:', error);
-          alert('Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.');
-        });
-      })
-      .catch((error) => {
-        console.error('Lỗi khi đăng ký:', error);
-        alert('Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.');
+      await database.ref('users/' + username).set({
+        email: email,
+        password: password // Lưu mật khẩu không an toàn
       });
+
+      alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
+      window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
+
+    } catch (error) {
+      console.error('Lỗi khi đăng ký hoặc lưu dữ liệu:', error);
+      alert('Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.');
+    }
   } else {
     alert('Vui lòng nhập đầy đủ thông tin.');
   }
 });
 
-
+// Toggle password visibility
 document.getElementById('toggle-password').addEventListener('click', function() {
-  const passwordField = document.getElementById('new-password'); // Sử dụng 'new-password' thay vì 'password'
+  const passwordField = document.getElementById('new-password');
   const eyeIcon = document.getElementById('toggle-password');
 
   if (passwordField.type === 'password') {
@@ -66,4 +61,3 @@ document.getElementById('toggle-password').addEventListener('click', function() 
     eyeIcon.src = 'images/dong.png'; // Hình ảnh con mắt đóng
   }
 });
-
