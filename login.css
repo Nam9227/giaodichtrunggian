@@ -21,12 +21,13 @@ header {
 
 /* Logo */
 header .logo {
-  max-width: 80px; /* Giảm kích thước của logo */
+  max-width: 70px; /* Giảm kích thước của logo thêm một chút */
   height: auto; /* Đảm bảo tỷ lệ của logo được giữ nguyên */
   border-radius: 10px; /* Bo góc logo */
   border: 2px solid #ddd; /* Thêm đường viền để rõ ràng hơn */
-  margin-top: 30px; /* Thêm khoảng cách phía trên để đưa logo xuống */
+  margin-top: 50px; /* Tăng khoảng cách phía trên để đưa logo xuống thêm */
 }
+
 
 
 
