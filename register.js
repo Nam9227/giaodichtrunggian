@@ -52,10 +52,10 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
     alert('Vui lòng nhập đầy đủ thông tin.');
   }
 });
-// register.js hoặc login.js, tùy thuộc vào trang đăng ký hoặc đăng nhập
+
 
 document.getElementById('toggle-password').addEventListener('click', function() {
-  const passwordField = document.getElementById('password'); // Hoặc 'new-password' nếu ở trang đăng ký
+  const passwordField = document.getElementById('new-password'); // Sử dụng 'new-password' thay vì 'password'
   const eyeIcon = document.getElementById('toggle-password');
 
   if (passwordField.type === 'password') {
@@ -66,3 +66,4 @@ document.getElementById('toggle-password').addEventListener('click', function() 
     eyeIcon.src = 'images/dong.png'; // Hình ảnh con mắt đóng
   }
 });
+
