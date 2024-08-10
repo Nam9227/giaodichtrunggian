@@ -235,7 +235,7 @@ footer {
     font-weight: 600;
 }
 
-.trust-section p {
+.trust-section p.commitment {
     font-size: 1em;
     color: #666;
     margin-bottom: 20px;
@@ -314,7 +314,7 @@ footer {
         font-size: 1.6em;
     }
 
-    .trust-section p {
+    .trust-section p.commitment {
         font-size: 0.9em;
     }
 
@@ -378,7 +378,7 @@ footer {
         font-size: 1.4em;
     }
 
-    .trust-section p {
+    .trust-section p.commitment {
         font-size: 0.8em;
     }
 
@@ -390,3 +390,4 @@ footer {
         padding: 6px 10px;
     }
 }
+
