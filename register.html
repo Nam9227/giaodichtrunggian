@@ -16,21 +16,22 @@
       <form>
         <label for="new-username">Tên đăng nhập:</label>
         <input type="text" id="new-username" name="new-username" placeholder="Tên đăng nhập" required>
-        
+  
         <label for="new-password">Mật khẩu:</label>
         <input type="password" id="new-password" name="new-password" placeholder="Mật khẩu" required>
 
         <label for="email">Gmail:</label>
         <input type="email" id="email" name="email" placeholder="Gmail" required>
 
-        <label for="verification-code">Mã xác thực:</label>
+        <div class="verification-container">
         <input type="text" id="verification-code" name="verification-code" placeholder="Nhập mã xác thực" required>
-
         <button type="button" id="send-verification-code">Gửi mã xác thực</button>
+      </div>
 
-        <button type="submit">Đăng ký</button>
-        <p>Đã có tài khoản? <a href="login.html" id="show-login">Đăng nhập</a></p>
-      </form>
+    <button type="submit">Đăng ký</button>
+    <p>Đã có tài khoản? <a href="login.html" id="show-login">Đăng nhập</a></p>
+  </form>
+
     </div>
   </div>
 
