@@ -26,7 +26,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
       window.location.href = 'admin.html'; // Đảm bảo rằng đường dẫn là chính xác
     } else {
       // Điều hướng đến trang chính
-      window.location.href = 'index.html';
+      window.location.href = 'home.html';
     }
   } else {
     alert('Tên đăng nhập hoặc mật khẩu không đúng.');
