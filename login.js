@@ -30,6 +30,8 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
     localStorage.setItem('loggedIn', 'true');
     
     if (username === 'admin') {
+      // Lưu trạng thái đăng nhập admin vào localStorage
+      localStorage.setItem('isAdmin', 'true');
       // Điều hướng đến trang quản trị
       window.location.href = 'admin.html';
     } else {
