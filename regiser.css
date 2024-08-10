@@ -1,0 +1,106 @@
+/* Toàn bộ trang */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container chứa form */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card chứa form */
+.auth-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-card h1 {
+  margin-top: 0;
+  font-size: 28px;
+  color: #333;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-card label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.auth-card input {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.auth-card button {
+  padding: 12px;
+  background: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.auth-card button:hover {
+  background: #0056b3;
+}
+
+.auth-card p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.auth-card p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.auth-card p a:hover {
+  text-decoration: underline;
+}
+/* Container chứa ô mật khẩu và hình con mắt */
+.password-container {
+  position: relative;
+  width: 100%; /* Đảm bảo container chiếm toàn bộ chiều rộng */
+}
+
+/* Ô nhập mật khẩu */
+.password-container input {
+  width: calc(100% - 0px); /* Để lại khoảng trống cho hình con mắt */
+  padding-right: 40px; /* Khoảng cách bên phải để hình con mắt không bị đè lên */
+  box-sizing: border-box; /* Đảm bảo padding không làm ô bị tràn */
+}
+
+/* Hình con mắt */
+.eye-icon {
+  position: absolute;
+  right: 10px; /* Khoảng cách từ bên phải */
+  top: 38%; /* Đặt ở giữa theo chiều dọc */
+  transform: translateY(-50%); /* Căn chỉnh hình con mắt ở giữa */
+  width: 30px; /* Kích thước hình con mắt */
+  cursor: pointer;
+  pointer-events: auto; /* Đảm bảo hình con mắt có thể nhấp được */
+}
