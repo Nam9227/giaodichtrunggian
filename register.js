@@ -52,8 +52,10 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
     alert('Vui lòng nhập đầy đủ thông tin.');
   }
 });
+// register.js hoặc login.js, tùy thuộc vào trang đăng ký hoặc đăng nhập
+
 document.getElementById('toggle-password').addEventListener('click', function() {
-  const passwordField = document.getElementById('password');
+  const passwordField = document.getElementById('password'); // Hoặc 'new-password' nếu ở trang đăng ký
   const eyeIcon = document.getElementById('toggle-password');
 
   if (passwordField.type === 'password') {
