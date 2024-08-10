@@ -17,15 +17,21 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  // Lấy thông tin người dùng từ localStorage
   const storedUser = JSON.parse(localStorage.getItem(username));
+
+  console.log('Tên người dùng:', username);
+  console.log('Mật khẩu:', password);
+  console.log('Người dùng lưu trữ:', storedUser);
 
   if (storedUser && password === storedUser.password) {
     alert('Đăng nhập thành công!');
     
+    // Lưu trạng thái đăng nhập vào localStorage
+    localStorage.setItem('loggedIn', 'true');
+    
     if (username === 'admin') {
       // Điều hướng đến trang quản trị
-      window.location.href = 'admin.html'; // Đảm bảo rằng đường dẫn là chính xác
+      window.location.href = 'admin.html';
     } else {
       // Điều hướng đến trang chính
       window.location.href = 'home.html';
