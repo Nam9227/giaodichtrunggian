@@ -70,3 +70,20 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
       alert('Có lỗi xảy ra khi kiểm tra tài khoản. Vui lòng thử lại.');
     });
 });
+
+
+
+
+
+document.getElementById('toggle-password').addEventListener('click', function() {
+  const passwordField = document.getElementById('password');
+  const eyeIcon = document.getElementById('toggle-password');
+
+  if (passwordField.type === 'password') {
+    passwordField.type = 'text';
+    eyeIcon.src = 'images/mo.png'; // Hình ảnh con mắt mở
+  } else {
+    passwordField.type = 'password';
+    eyeIcon.src = 'images/dong.png'; // Hình ảnh con mắt đóng
+  }
+});
