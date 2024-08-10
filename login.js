@@ -1,4 +1,4 @@
-import { database } from './firebase-config.js';
+import { database, auth } from './firebase-config.js';
 
 window.onload = function() {
   // Tạo tài khoản admin mặc định nếu chưa tồn tại
