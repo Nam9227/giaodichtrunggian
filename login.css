@@ -12,10 +12,8 @@ body {
 
 /* Header chứa logo */
 header {
-  background-color: #1e88e5;
-  color: #fff;
   width: 100%;
-  padding: 20px 0; /* Thêm padding để logo có không gian xung quanh */
+  padding: 10px 0; /* Giảm padding để logo nhỏ hơn */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +21,10 @@ header {
 
 /* Logo */
 header .logo {
-  max-width: 120px;
+  max-width: 80px; /* Giảm kích thước của logo */
+  height: auto; /* Đảm bảo tỷ lệ của logo được giữ nguyên */
+  border: none; /* Loại bỏ border nếu có */
+  border-radius: 0; /* Loại bỏ bo góc nếu có */
 }
 
 /* Container chứa form */
