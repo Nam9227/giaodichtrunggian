@@ -1,22 +1,15 @@
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDo5POI_MkDJyNE5y_7BIdfs-B2mj1iUBY",
-  authDomain: "csdl-web-giaodich.firebaseapp.com",
-  databaseURL: "https://csdl-web-giaodich-default-rtdb.firebaseio.com",
-  projectId: "csdl-web-giaodich",
-  storageBucket: "csdl-web-giaodich.appspot.com",
-  messagingSenderId: "834585121842",
-  appId: "1:834585121842:web:bca26240e1e5187792d82b",
-  measurementId: "G-5VDD2LKEKV"
-};
+// Import Firebase SDK
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+import { firebaseConfig } from './firebase-config.js';
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
-// Khởi tạo Firebase
-firebase.initializeApp(firebaseConfig);
-
+const auth = firebase.auth();
 const database = firebase.database();
 
 // Xử lý đăng ký
@@ -28,18 +21,25 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
   const email = document.getElementById('email').value;
 
   if (username && password && email) {
-    // Lưu thông tin người dùng vào Firebase Realtime Database
-    database.ref('users/' + username).set({
-      username: username,
-      password: password,  // Chú ý: Lưu mật khẩu trực tiếp không an toàn, nên mã hóa mật khẩu trước khi lưu
-      email: email
-    }).then(() => {
-      alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
-      window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
-    }).catch((error) => {
-      console.error('Lỗi khi lưu dữ liệu:', error);
-      alert('Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.');
-    });
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log('Đăng ký thành công:', user);
+        database.ref('users/' + username).set({
+          username: username,
+          email: email
+        }).then(() => {
+          alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
+          window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
+        }).catch((error) => {
+          console.error('Lỗi khi lưu dữ liệu:', error);
+          alert('Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.');
+        });
+      })
+      .catch((error) => {
+        console.error('Lỗi khi đăng ký:', error);
+        alert('Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.');
+      });
   } else {
     alert('Vui lòng nhập đầy đủ thông tin.');
   }
