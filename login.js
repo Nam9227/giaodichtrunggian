@@ -26,26 +26,31 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  database.ref('users/' + username).once('value', (snapshot) => {
-    const storedUser = snapshot.val();
+  database.ref('users/' + username).once('value')
+    .then((snapshot) => {
+      const storedUser = snapshot.val();
 
-    if (storedUser && password === storedUser.password) {
-      alert('Đăng nhập thành công!');
-      
-      // Lưu trạng thái đăng nhập vào localStorage
-      localStorage.setItem('loggedIn', 'true');
-      
-      if (username === 'admin' && password === 'admin922007') {
-        // Lưu trạng thái đăng nhập admin vào localStorage
-        localStorage.setItem('isAdmin', 'true');
-        // Điều hướng đến trang quản trị
-        window.location.href = 'admin.html';
+      if (storedUser && password === storedUser.password) {
+        alert('Đăng nhập thành công!');
+        
+        // Lưu trạng thái đăng nhập vào localStorage
+        localStorage.setItem('loggedIn', 'true');
+        
+        if (username === 'admin' && password === 'admin922007') {
+          // Lưu trạng thái đăng nhập admin vào localStorage
+          localStorage.setItem('isAdmin', 'true');
+          // Điều hướng đến trang quản trị
+          window.location.href = 'admin.html';
+        } else {
+          // Điều hướng đến trang chính
+          window.location.href = 'home.html';
+        }
       } else {
-        // Điều hướng đến trang chính
-        window.location.href = 'home.html';
+        alert('Tên đăng nhập hoặc mật khẩu không đúng.');
       }
-    } else {
-      alert('Tên đăng nhập hoặc mật khẩu không đúng.');
-    }
-  });
+    })
+    .catch((error) => {
+      console.error('Lỗi khi kiểm tra tài khoản:', error);
+      alert('Có lỗi xảy ra khi kiểm tra tài khoản. Vui lòng thử lại.');
+    });
 });
