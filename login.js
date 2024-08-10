@@ -1,7 +1,3 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
-
 const firebaseConfig = {
   apiKey: "AIzaSyDo5POI_MkDJyNE5y_7BIdfs-B2mj1iUBY",
   authDomain: "csdl-web-giaodich.firebaseapp.com",
@@ -13,13 +9,12 @@ const firebaseConfig = {
   measurementId: "G-5VDD2LKEKV"
 };
 
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const database = firebase.database();
+// Reference to the auth and database services
 const auth = firebase.auth();
-
-export { database, auth };
-
+const database = firebase.database();
 
 window.onload = function() {
   // Tạo tài khoản admin mặc định nếu chưa tồn tại
