@@ -1,6 +1,4 @@
-// Thay vì import, sử dụng Firebase từ CDN
-
-// Initialize Firebase
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDo5POI_MkDJyNE5y_7BIdfs-B2mj1iUBY",
   authDomain: "csdl-web-giaodich.firebaseapp.com",
@@ -19,7 +17,7 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 
-// Xử lý đăng ký
+// Handle registration
 document.getElementById('register-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
@@ -32,9 +30,12 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
       .then((userCredential) => {
         const user = userCredential.user;
         console.log('Đăng ký thành công:', user);
+
+        // Lưu thông tin người dùng (bao gồm cả mật khẩu mã hóa) vào Firebase Realtime Database
+        // Đây là cách tiếp cận không an toàn, vì vậy hãy thận trọng!
         database.ref('users/' + username).set({
-          username: username,
-          email: email
+          email: email,
+          password: password // Lưu mật khẩu không an toàn
         }).then(() => {
           alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
           window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
