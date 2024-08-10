@@ -1,15 +1,19 @@
-// Import Firebase modules
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js';
-import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js';
-import { getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js';
-
-// Import Firebase configuration
-import { firebaseConfig } from './firebase-config.js';
-
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const database = getDatabase(app);
+const firebaseConfig = {
+  apiKey: "AIzaSyDo5POI_MkDJyNE5y_7BIdfs-B2mj1iUBY",
+  authDomain: "csdl-web-giaodich.firebaseapp.com",
+  databaseURL: "https://csdl-web-giaodich-default-rtdb.firebaseio.com",
+  projectId: "csdl-web-giaodich",
+  storageBucket: "csdl-web-giaodich.appspot.com",
+  messagingSenderId: "834585121842",
+  appId: "1:834585121842:web:bca26240e1e5187792d82b",
+  measurementId: "G-5VDD2LKEKV"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const database = firebase.database();
 
 // Xử lý gửi mã xác thực
 document.getElementById('send-verification-code').addEventListener('click', function() {
@@ -17,15 +21,12 @@ document.getElementById('send-verification-code').addEventListener('click', func
 
   if (email) {
     const actionCodeSettings = {
-      // URL phải được cấu hình trong phần Firebase Console
-      // URL cho trang xác nhận email
       url: 'http://localhost:8000/verify-email.html',
       handleCodeInApp: true
     };
 
-    sendSignInLinkToEmail(auth, email, actionCodeSettings)
+    auth.sendSignInLinkToEmail(email, actionCodeSettings)
       .then(() => {
-        // Lưu địa chỉ email vào localStorage để sử dụng khi xác thực
         window.localStorage.setItem('emailForSignIn', email);
         alert('Mã xác thực đã được gửi đến ' + email);
       })
@@ -48,31 +49,23 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
   const verificationCode = document.getElementById('verification-code').value;
 
   if (username && password && email && verificationCode) {
-    const user = {
-      username: username,
-      password: password,
-      email: email,
-      verificationCode: verificationCode
-    };
-
-    // Xác thực mã xác thực
     const emailForSignIn = window.localStorage.getItem('emailForSignIn');
-    if (isSignInWithEmailLink(auth, window.location.href)) {
-      // Xác thực email với mã link
-      signInWithEmailLink(auth, emailForSignIn, window.location.href)
+    
+    if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
+      firebase.auth().signInWithEmailLink(emailForSignIn, window.location.href)
         .then((result) => {
           const user = result.user;
           console.log('Đăng nhập thành công:', user);
-          // Lưu tài khoản vào Firebase Realtime Database
-          set(ref(database, 'users/' + username), user)
-            .then(() => {
-              alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
-              window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
-            })
-            .catch((error) => {
-              console.error('Lỗi khi lưu dữ liệu:', error);
-              alert('Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.');
-            });
+          firebase.database().ref('users/' + username).set({
+            username: username,
+            email: email
+          }).then(() => {
+            alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
+            window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
+          }).catch((error) => {
+            console.error('Lỗi khi lưu dữ liệu:', error);
+            alert('Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.');
+          });
         })
         .catch((error) => {
           console.error('Lỗi khi xác thực mã:', error);
