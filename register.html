@@ -1,23 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<!-- Thêm vào trong thẻ <head> -->
-<script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js"></script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Đăng Ký</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Thêm Firebase JavaScript SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js" defer></script>
+  <!-- Thêm module JavaScript của bạn -->
+  <script type="module" src="register.js" defer></script>
 </head>
 <body>
   <div class="auth-container">
     <div class="auth-card" id="register-form">
       <h1>Đăng Ký</h1>
-      <form>
+      <form id="register-form">
         <label for="new-username">Tên đăng nhập:</label>
         <input type="text" id="new-username" name="new-username" placeholder="Tên đăng nhập" required>
-  
+        
         <label for="new-password">Mật khẩu:</label>
         <input type="password" id="new-password" name="new-password" placeholder="Mật khẩu" required>
 
@@ -25,17 +26,14 @@
         <input type="email" id="email" name="email" placeholder="Gmail" required>
 
         <div class="verification-container">
-        <input type="text" id="verification-code" name="verification-code" placeholder="Nhập mã xác thực" required>
-        <button type="button" id="send-verification-code">Gửi mã xác thực</button>
-      </div>
+          <input type="text" id="verification-code" name="verification-code" placeholder="Nhập mã xác thực" required>
+          <button type="button" id="send-verification-code">Gửi mã xác thực</button>
+        </div>
 
-    <button type="submit">Đăng ký</button>
-    <p>Đã có tài khoản? <a href="login.html" id="show-login">Đăng nhập</a></p>
-  </form>
-
+        <button type="submit">Đăng ký</button>
+        <p>Đã có tài khoản? <a href="login.html" id="show-login">Đăng nhập</a></p>
+      </form>
     </div>
   </div>
-
-  <script src="register.js"></script>
 </body>
 </html>
