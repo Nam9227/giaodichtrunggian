@@ -17,10 +17,12 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
+  // Lấy thông tin người dùng từ localStorage
   const storedUser = JSON.parse(localStorage.getItem(username));
 
   if (storedUser && password === storedUser.password) {
     alert('Đăng nhập thành công!');
+    
     if (username === 'admin') {
       // Điều hướng đến trang quản trị
       window.location.href = 'admin.html'; // Đảm bảo rằng đường dẫn là chính xác
