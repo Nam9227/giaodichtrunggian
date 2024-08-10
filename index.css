@@ -214,3 +214,180 @@ footer {
         padding: 5px 12px;
     }
 }
+
+
+/* Các phần CSS khác đã được giữ nguyên */
+
+.trust-section {
+    background-color: #ffffff;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 20px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.trust-section h2 {
+    font-size: 2em;
+    color: #1e88e5;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.trust-section p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.bank-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.bank-list li {
+    font-size: 1.1em;
+    color: #333;
+    background-color: #f1f1f1;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header .logo img {
+        max-width: 60px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    nav ul li {
+        margin: 5px;
+    }
+
+    .hero {
+        height: 50vh;
+        margin: 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+
+    .hero-content p {
+        font-size: 0.9em;
+    }
+
+    .cta-button {
+        font-size: 1em;
+        padding: 6px 15px;
+    }
+
+    .trust-section {
+        padding: 30px 15px;
+        margin: 15px 10px;
+    }
+
+    .trust-section h2 {
+        font-size: 1.8em;
+    }
+
+    .trust-section p {
+        font-size: 1em;
+    }
+
+    .bank-list {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bank-list li {
+        padding: 8px 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    header .logo img {
+        max-width: 50px;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+        padding: 0;
+        width: auto;
+    }
+
+    nav ul li {
+        margin: 5px;
+    }
+
+    .hero {
+        height: 40vh;
+        margin: 5px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5em;
+    }
+
+    .hero-content p {
+        font-size: 0.8em;
+    }
+
+    .cta-button {
+        font-size: 0.9em;
+        padding: 5px 12px;
+    }
+
+    .trust-section {
+        padding: 20px 10px;
+        margin: 10px 5px;
+    }
+
+    .trust-section h2 {
+        font-size: 1.5em;
+    }
+
+    .trust-section p {
+        font-size: 0.9em;
+    }
+
+    .bank-list {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bank-list li {
+        padding: 6px 10px;
+    }
+}
