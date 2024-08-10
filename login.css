@@ -8,6 +8,7 @@ body {
   flex-direction: column; /* Đặt chiều dọc để logo nằm trên cùng */
   align-items: center;
   height: 100vh;
+  position: relative; /* Đặt vị trí tương đối để logo có thể nổi lên */
 }
 
 /* Header chứa logo */
@@ -17,16 +18,22 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute; /* Đặt vị trí tuyệt đối để nổi lên */
+  top: 0; /* Đặt logo ở phía trên cùng */
+  left: 0;
+  right: 0;
+  z-index: 10; /* Đảm bảo logo nổi lên trên bảng đăng nhập */
 }
 
 /* Logo */
 header .logo {
-  max-width: 80px; /* Giữ kích thước của logo như hiện tại */
+  max-width: 85px; /* Giảm kích thước logo để phù hợp */
   height: auto; /* Đảm bảo tỷ lệ của logo được giữ nguyên */
-  border-radius: 10px; /* Bo góc logo */
+  border-radius: 50px; /* Bo góc logo */
   border: 2px solid #ddd; /* Thêm đường viền để rõ ràng hơn */
-  margin-top: 120px; /* Tăng khoảng cách phía trên để đưa logo xuống thêm */
+  margin-top: 15px; /* Đưa logo xuống từ đỉnh trang */
 }
+
 
 
 
