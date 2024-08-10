@@ -1,84 +1,108 @@
-/* Các quy tắc CSS hiện tại của bạn */
+/* Toàn bộ trang */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column; /* Đặt chiều dọc để logo nằm trên cùng */
+  align-items: center;
+  height: 100vh;
 }
 
+/* Header chứa logo */
 header {
   background-color: #1e88e5;
   color: #fff;
-  padding: 10px 0;
-  text-align: center;
+  width: 100%;
+  padding: 20px 0; /* Thêm padding để logo có không gian xung quanh */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Logo */
 header .logo {
   max-width: 120px;
 }
 
+/* Container chứa form */
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 60px); /* Tính toán chiều cao còn lại sau header */
+  flex: 1; /* Làm cho container chiếm toàn bộ không gian còn lại */
 }
 
+/* Card chứa form */
 .auth-card {
   background: #fff;
+  padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  max-width: 400px;
   width: 100%;
+  max-width: 400px;
+  text-align: center;
 }
 
 .auth-card h1 {
   margin-top: 0;
+  font-size: 28px;
+  color: #333;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
 }
 
 .auth-card label {
-  display: block;
   margin-bottom: 5px;
-  font-weight: 500;
+  font-size: 14px;
+  color: #555;
 }
 
 .auth-card input {
-  width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .auth-card button {
-  width: 100%;
-  padding: 10px;
-  background-color: #1e88e5;
-  color: #fff;
+  padding: 12px;
+  background: #007bff;
   border: none;
   border-radius: 5px;
+  color: #fff;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .auth-card button:hover {
-  background-color: #1565c0;
+  background: #0056b3;
 }
 
 .auth-card p {
-  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
-.auth-card a {
-  color: #1e88e5;
+.auth-card p a {
+  color: #007bff;
   text-decoration: none;
 }
 
-.auth-card a:hover {
+.auth-card p a:hover {
   text-decoration: underline;
 }
+
+
+
+
+
+
 /* Toàn bộ trang */
 body {
   font-family: Arial, sans-serif;
