@@ -29,7 +29,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
     // Lưu trạng thái đăng nhập vào localStorage
     localStorage.setItem('loggedIn', 'true');
     
-    if (username === 'admin' && password === 'admin922007' ) {
+    if (username === 'admin' && password === 'admin922007') {
       // Lưu trạng thái đăng nhập admin vào localStorage
       localStorage.setItem('isAdmin', 'true');
       // Điều hướng đến trang quản trị
