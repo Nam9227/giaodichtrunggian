@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
-            // Xóa thông tin đăng nhập cho cả người dùng và admin
+            // Xóa thông tin đăng nhập
             localStorage.removeItem('loggedIn');
             localStorage.removeItem('isAdmin');
 
