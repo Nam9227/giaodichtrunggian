@@ -78,18 +78,13 @@ nav ul li a:hover {
     color: #fff;
     border-radius: 10px;
     margin: 10px 20px;
-    position: relative;
-    overflow: hidden;
 }
 
 .hero-content {
     max-width: 600px;
     background-color: rgba(255, 255, 255, 0.85);
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    z-index: 1;
 }
 
 .hero-content h1 {
@@ -97,11 +92,6 @@ nav ul li a:hover {
     margin-bottom: 10px;
     color: #1e88e5;
     font-weight: 600;
-    transition: transform 0.3s ease;
-}
-
-.hero-content h1:hover {
-    transform: scale(1.05);
 }
 
 .hero-content p {
@@ -114,7 +104,7 @@ nav ul li a:hover {
 .cta-button {
     background-color: #f4511e;
     color: #fff;
-    padding: 12px 24px;
+    padding: 8px 20px;
     text-decoration: none;
     font-size: 1.1em;
     border-radius: 20px;
@@ -137,13 +127,15 @@ footer {
     border-top: 2px solid #0d47a1;
 }
 
+/* Các phần CSS khác đã được giữ nguyên */
+
 .trust-section {
     background-color: #ffffff;
     padding: 30px 20px;
     text-align: center;
     border-radius: 10px;
     margin: 20px auto;
-    max-width: 600px;
+    max-width: 600px; /* Giảm chiều rộng để khớp với phần nội dung phía trên */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -170,7 +162,7 @@ footer {
     list-style-type: none;
     padding: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Xếp theo hàng dọc */
     gap: 15px;
     align-items: center;
 }
@@ -217,10 +209,6 @@ footer {
         margin: 10px;
     }
 
-    .hero-content {
-        padding: 15px;
-    }
-
     .hero-content h1 {
         font-size: 1.8em;
     }
@@ -237,7 +225,7 @@ footer {
     .trust-section {
         padding: 20px 15px;
         margin: 15px 10px;
-        max-width: 600px;
+        max-width: 600px; /* Giữ chiều rộng nhỏ hơn cho phù hợp */
     }
 
     .trust-section h2 {
@@ -286,10 +274,6 @@ footer {
         margin: 5px;
     }
 
-    .hero-content {
-        padding: 10px;
-    }
-
     .hero-content h1 {
         font-size: 1.5em;
     }
@@ -306,7 +290,7 @@ footer {
     .trust-section {
         padding: 15px 10px;
         margin: 10px 5px;
-        max-width: 100%;
+        max-width: 100%; /* Đảm bảo phần nội dung khớp với chiều rộng màn hình nhỏ */
     }
 
     .trust-section h2 {
