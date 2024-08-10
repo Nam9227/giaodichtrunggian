@@ -21,7 +21,7 @@ body, html {
 }
 
 header {
-    background-color: #1e88e5;
+    background-color: #004d40; /* Màu xanh lục đậm */
     color: #fff;
     padding: 10px 0;
     border-radius: 0 0 10px 10px;
@@ -58,12 +58,12 @@ nav ul li a {
     font-weight: 500;
     padding: 8px 15px;
     border-radius: 20px;
-    background-color: #42a5f5;
+    background-color: #00796b; /* Màu xanh lục */
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
-    background-color: #1e88e5;
+    background-color: #004d40; /* Màu xanh lục đậm */
     transform: scale(1.05);
 }
 
@@ -90,19 +90,19 @@ nav ul li a:hover {
 .hero-content h1 {
     font-size: 2.2em;
     margin-bottom: 10px;
-    color: #1e88e5;
+    color: #ff5722; /* Màu cam */
     font-weight: 600;
 }
 
 .hero-content p {
     font-size: 1em;
     margin-bottom: 20px;
-    color: #666;
+    color: #555; /* Màu xám đậm */
     font-weight: 400;
 }
 
 .cta-button {
-    background-color: #f4511e;
+    background-color: #ff5722; /* Màu cam */
     color: #fff;
     padding: 8px 20px;
     text-decoration: none;
@@ -113,24 +113,24 @@ nav ul li a:hover {
 }
 
 .cta-button:hover {
-    background-color: #e64a19;
+    background-color: #e64a19; /* Màu cam đậm */
     transform: scale(1.05);
 }
 
 footer {
-    background-color: #1e88e5;
+    background-color: #004d40; /* Màu xanh lục đậm */
     color: #fff;
     text-align: center;
     padding: 10px 0;
     border-radius: 10px 10px 0 0;
     margin-top: auto;
-    border-top: 2px solid #0d47a1;
+    border-top: 2px solid #00251a; /* Màu xanh lục rất đậm */
 }
 
 /* Các phần CSS khác đã được giữ nguyên */
 
 .trust-section {
-    background-color: #ffffff;
+    background-color: #e0f2f1; /* Màu xanh lục nhạt */
     padding: 30px 20px;
     text-align: center;
     border-radius: 10px;
@@ -147,14 +147,14 @@ footer {
 
 .trust-section h2 {
     font-size: 1.8em;
-    color: #1e88e5;
+    color: #00796b; /* Màu xanh lục */
     margin-bottom: 15px;
     font-weight: 600;
 }
 
 .trust-section p.commitment {
     font-size: 1em;
-    color: #666;
+    color: #555; /* Màu xám đậm */
     margin-bottom: 20px;
 }
 
@@ -169,8 +169,8 @@ footer {
 
 .bank-list li {
     font-size: 1.1em;
-    color: #333;
-    background-color: #f1f1f1;
+    color: #333; /* Màu xám đậm */
+    background-color: #c8e6c9; /* Màu xanh lục nhạt */
     padding: 10px 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
