@@ -124,3 +124,28 @@ body {
 .auth-card p a:hover {
   text-decoration: underline;
 }
+/* login.css */
+
+/* Container chứa ô mật khẩu và hình con mắt */
+.password-container {
+  position: relative;
+  width: 100%; /* Đảm bảo container chiếm toàn bộ chiều rộng */
+}
+
+/* Ô nhập mật khẩu */
+.password-container input {
+  width: calc(100% - 0px); /* Để lại khoảng trống cho hình con mắt */
+  padding-right: 40px; /* Khoảng cách bên phải để hình con mắt không bị đè lên */
+  box-sizing: border-box; /* Đảm bảo padding không làm ô bị tràn */
+}
+
+/* Hình con mắt */
+.eye-icon {
+  position: absolute;
+  right: 10px; /* Khoảng cách từ bên phải */
+  top: 38%; /* Đặt ở giữa theo chiều dọc */
+  transform: translateY(-50%); /* Căn chỉnh hình con mắt ở giữa */
+  width: 30px; /* Kích thước hình con mắt */
+  cursor: pointer;
+  pointer-events: auto; /* Đảm bảo hình con mắt có thể nhấp được */
+}
