@@ -78,6 +78,8 @@ nav ul li a:hover {
     color: #fff;
     border-radius: 10px;
     margin: 10px 20px;
+    position: relative; /* Thêm thuộc tính này để hỗ trợ hiệu ứng */
+    overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài phần hero */
 }
 
 .hero-content {
@@ -86,6 +88,8 @@ nav ul li a:hover {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1; /* Đảm bảo phần nội dung nằm trên ảnh nền */
 }
 
 .hero-content h1 {
