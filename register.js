@@ -1,4 +1,4 @@
-// Firebase configuration
+// Initialize Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyDo5POI_MkDJyNE5y_7BIdfs-B2mj1iUBY",
   authDomain: "csdl-web-giaodich.firebaseapp.com",
@@ -17,38 +17,54 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 
-// Handle registration
-document.getElementById('register-form').addEventListener('submit', function(e) {
+window.onload = async function() {
+  try {
+    // Tạo tài khoản admin mặc định nếu chưa tồn tại
+    const snapshot = await database.ref('users/admin').once('value');
+    if (!snapshot.exists()) {
+      const adminUser = {
+        username: 'admin',
+        password: 'admin922007' // Mật khẩu mặc định cho tài khoản admin
+      };
+      await database.ref('users/admin').set(adminUser);
+      console.log('Tài khoản admin mặc định đã được tạo.');
+    }
+  } catch (error) {
+    console.error('Lỗi khi tạo tài khoản admin:', error);
+  }
+};
+
+// Xử lý đăng nhập
+document.getElementById('login-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   
-  const username = document.getElementById('new-username').value;
-  const password = document.getElementById('new-password').value;
-  const email = document.getElementById('email').value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
 
-  if (username && password && email) {
-    auth.createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log('Đăng ký thành công:', user);
+  try {
+    const snapshot = await database.ref('users/' + username).once('value');
+    const storedUser = snapshot.val();
 
-        // Lưu thông tin người dùng (bao gồm cả mật khẩu mã hóa) vào Firebase Realtime Database
-        // Đây là cách tiếp cận không an toàn, vì vậy hãy thận trọng!
-        database.ref('users/' + username).set({
-          email: email,
-          password: password // Lưu mật khẩu không an toàn
-        }).then(() => {
-          alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
-          window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
-        }).catch((error) => {
-          console.error('Lỗi khi lưu dữ liệu:', error);
-          alert('Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.');
-        });
-      })
-      .catch((error) => {
-        console.error('Lỗi khi đăng ký:', error);
-        alert('Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.');
-      });
-  } else {
-    alert('Vui lòng nhập đầy đủ thông tin.');
+    if (storedUser && password === storedUser.password) {
+      alert('Đăng nhập thành công!');
+      
+      // Lưu trạng thái đăng nhập vào localStorage
+      localStorage.setItem('loggedIn', 'true');
+      
+      if (username === 'admin' && password === 'admin922007') {
+        // Lưu trạng thái đăng nhập admin vào localStorage
+        localStorage.setItem('isAdmin', 'true');
+        // Điều hướng đến trang quản trị
+        window.location.href = 'admin.html';
+      } else {
+        // Điều hướng đến trang chính
+        window.location.href = 'home.html';
+      }
+    } else {
+      alert('Tên đăng nhập hoặc mật khẩu không đúng.');
+    }
+  } catch (error) {
+    console.error('Lỗi khi kiểm tra tài khoản:', error);
+    alert('Có lỗi xảy ra khi kiểm tra tài khoản. Vui lòng thử lại.');
   }
 });
