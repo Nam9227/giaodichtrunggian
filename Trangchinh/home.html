@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Giao Dịch Trung Gian</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    <script src="home.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo" />
+            </div>
+            <div class="user-info">
+                <span id="username" class="user-name">Xin chào, <strong>username</strong></span>
+                <span id="balance" class="user-balance">Số dư: <strong>10,000,000 VNĐ</strong></span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="home.html">Trang Chủ</a></li>
+                    <li><a href="profile.html">Trang Cá Nhân</a></li>
+                    <li><button id="logout-btn" class="logout-btn">Đăng Xuất</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Chào Mừng Đến Với Giao Dịch Trung Gian</h1>
+                <p>An toàn, nhanh chóng và đáng tin cậy.</p>
+                <button class="cta-btn">Bắt Đầu Ngay</button>
+            </div>
+        </section>
+
+        <section class="main-content">
+            <div class="container">
+                <h2 class="section-title">Chức Năng Chính</h2>
+                <div class="features">
+                    <!-- Chức năng bên trả tiền -->
+                    <div class="feature">
+                        <h3>Bên Trả Tiền</h3>
+                        <p>Thanh toán an toàn qua trung gian, bảo vệ quyền lợi của bạn.</p>
+                        <button class="action-btn" onclick="goToPayment()">Thực Hiện Trả Tiền</button>
+                    </div>
+                    <!-- Chức năng trao đổi vật phẩm -->
+                    <div class="feature">
+                        <h3>Trao Đổi Vật Phẩm</h3>
+                        <p>Giao dịch vật phẩm hoặc hàng hóa với người khác dễ dàng.</p>
+                        <button class="action-btn" onclick="goToExchange()">Thực Hiện Trao Đổi</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Giao Dịch Trung Gian. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const username = "nguoiban123";
+            const balance = "15,000,000 VNĐ";
+            document.getElementById("username").innerHTML = `Xin chào, <strong>${username}</strong>`;
+            document.getElementById("balance").innerHTML = `Số dư: <strong>${balance}</strong>`;
+        });
+
+        function goToPayment() {
+            window.location.href = "payment.html";
+        }
+
+        function goToExchange() {
+            window.location.href = "exchange.html";
+        }
+    </script>
+</body>
+</html>
