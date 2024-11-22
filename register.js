@@ -32,17 +32,14 @@ document.getElementById('register-form').addEventListener('submit', async functi
       const user = userCredential.user;
       console.log('Đăng ký thành công:', user);
 
-      // Modify the email to be a valid Firebase key (replace '@' and '.' with special characters)
-      const emailKey = email.replace(/@/g, '_at_').replace(/\./g, '_dot_');
-
       // Lưu thông tin người dùng vào Firebase Realtime Database
-      await database.ref('users/' + emailKey).set({
+      await database.ref('users/' + username).set({
         email: email,        // Lưu email
         password: password,  // Lưu mật khẩu
         balance: 0           // Khởi tạo số dư mặc định
       });
 
-      alert('Đăng ký thành công! Bạn có thể đăng nhập thành công.');
+      alert('Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.');
       window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
 
     } catch (error) {
