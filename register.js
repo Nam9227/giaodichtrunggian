@@ -20,7 +20,7 @@ const database = firebase.database();
 // Handle registration
 document.getElementById('register-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  
+
   const username = document.getElementById('new-username').value;
   const password = document.getElementById('new-password').value;
   const email = document.getElementById('email').value;
@@ -31,9 +31,14 @@ document.getElementById('register-form').addEventListener('submit', async functi
       const user = userCredential.user;
       console.log('Đăng ký thành công:', user);
 
-      await database.ref('users/' + username).set({
+      // Tạo ID ngẫu nhiên 6 chữ số
+      const userId = generateRandomId(6);
+
+      // Lưu thông tin người dùng vào Firebase Realtime Database
+      await database.ref('users/' + userId).set({
+        username: username,
         email: email,
-        password: password // Lưu mật khẩu không an toàn
+        password: password, // Lưu mật khẩu không an toàn
       });
 
       alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
@@ -47,6 +52,17 @@ document.getElementById('register-form').addEventListener('submit', async functi
     alert('Vui lòng nhập đầy đủ thông tin.');
   }
 });
+
+// Hàm tạo ID ngẫu nhiên 6 chữ số
+function generateRandomId(length) {
+  let result = '';
+  const characters = '0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
 
 // Toggle password visibility
 document.getElementById('toggle-password').addEventListener('click', function() {
