@@ -17,52 +17,62 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 
+// Create admin account if not exists
 window.onload = function() {
-  // Tạo tài khoản admin mặc định nếu chưa tồn tại
+  // Check if admin exists
   database.ref('users/admin').once('value', (snapshot) => {
     if (!snapshot.exists()) {
-      // Tạo tài khoản admin sử dụng Firebase Authentication
-      auth.createUserWithEmailAndPassword('admin@example.com', 'admin922007') // Sử dụng email và mật khẩu
+      // Create admin account using Firebase Authentication
+      auth.createUserWithEmailAndPassword('admin@example.com', 'admin922007') // Email and password for admin
         .then(() => {
-          console.log('Tài khoản admin đã được tạo qua Firebase Authentication.');
+          console.log('Admin account created via Firebase Authentication.');
         })
         .catch((error) => {
-          console.error('Lỗi khi tạo tài khoản admin:', error);
+          console.error('Error creating admin account:', error);
         });
     }
   });
 };
 
-// Xử lý đăng nhập
+// Handle login with username and password
 document.getElementById('login-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+  const username = document.getElementById('username').value.trim(); // Get username
+  const password = document.getElementById('password').value.trim(); // Get password
 
-  // Thực hiện đăng nhập với Firebase Authentication
-  auth.signInWithEmailAndPassword(username + '@example.com', password) // Đảm bảo email của bạn có định dạng đúng
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log('Đăng nhập thành công:', user);
-      
-      // Lưu trạng thái đăng nhập vào localStorage
-      localStorage.setItem('loggedIn', 'true');
-      
-      if (user.email === 'admin@example.com') {
-        // Lưu trạng thái đăng nhập admin vào localStorage
-        localStorage.setItem('isAdmin', 'true');
-        // Điều hướng đến trang quản trị
-        window.location.href = 'admin.html';
+  // Check if the username exists in Firebase Realtime Database
+  database.ref('users/' + username).once('value').then(snapshot => {
+    if (snapshot.exists()) {
+      const userData = snapshot.val(); // Get user data from Firebase
+      const storedPassword = userData.password; // Get stored password for comparison
+
+      // Compare entered password with stored password
+      if (password === storedPassword) {
+        console.log('Login successful:', username);
+        
+        // Store login status in localStorage
+        localStorage.setItem('loggedIn', 'true');
+
+        // Check if the logged-in user is admin
+        if (username === 'admin') {
+          localStorage.setItem('isAdmin', 'true');
+          window.location.href = 'admin.html'; // Redirect to admin page
+        } else {
+          window.location.href = 'Trangchinh/home.html'; // Redirect to home page
+        }
       } else {
-        // Điều hướng đến trang chính
-        window.location.href = 'Trangchinh/home.html';
+        console.error('Incorrect password');
+        alert('Tên đăng nhập hoặc mật khẩu không đúng.');
       }
-    })
-    .catch((error) => {
-      console.error('Lỗi khi đăng nhập:', error);
+    } else {
+      console.error('Username does not exist');
       alert('Tên đăng nhập hoặc mật khẩu không đúng.');
-    });
+    }
+  }).catch(error => {
+    console.error('Error checking user data:', error);
+    alert('Có lỗi xảy ra khi đăng nhập. Vui lòng thử lại.');
+  });
 });
 
 // Toggle password visibility
@@ -72,9 +82,9 @@ document.getElementById('toggle-password').addEventListener('click', function() 
 
   if (passwordField.type === 'password') {
     passwordField.type = 'text';
-    eyeIcon.src = 'images/mo.png'; // Hình ảnh con mắt mở
+    eyeIcon.src = 'images/mo.png'; // Open eye icon
   } else {
     passwordField.type = 'password';
-    eyeIcon.src = 'images/dong.png'; // Hình ảnh con mắt đóng
+    eyeIcon.src = 'images/dong.png'; // Closed eye icon
   }
 });
