@@ -18,30 +18,31 @@ const auth = firebase.auth();
 const database = firebase.database();
 
 // Handle registration
-document.getElementById('register-form').addEventListener('submit', async function(e) {
+document.getElementById('register-form').addEventListener('submit', async function (e) {
   e.preventDefault();
 
-  const username = document.getElementById('new-username').value;
-  const password = document.getElementById('new-password').value;
-  const email = document.getElementById('email').value;
+  const username = document.getElementById('new-username').value.trim(); // Tên người dùng
+  const password = document.getElementById('new-password').value.trim();
+  const email = document.getElementById('email').value.trim();
 
   if (username && password && email) {
     try {
+      // Đăng ký người dùng với Firebase Authentication
       const userCredential = await auth.createUserWithEmailAndPassword(email, password);
       const user = userCredential.user;
       console.log('Đăng ký thành công:', user);
 
-      // Tạo ID ngẫu nhiên 6 chữ số
-      const userId = generateRandomId(6);
+      // Modify the email to be a valid Firebase key (replace '@' and '.' with special characters)
+      const emailKey = email.replace(/@/g, '_at_').replace(/\./g, '_dot_');
 
       // Lưu thông tin người dùng vào Firebase Realtime Database
-      await database.ref('users/' + userId).set({
-        username: username,
-        email: email,
-        password: password, // Lưu mật khẩu không an toàn
+      await database.ref('users/' + emailKey).set({
+        email: email,        // Lưu email
+        password: password,  // Lưu mật khẩu
+        balance: 0           // Khởi tạo số dư mặc định
       });
 
-      alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
+      alert('Đăng ký thành công! Bạn có thể đăng nhập thành công.');
       window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
 
     } catch (error) {
@@ -53,19 +54,8 @@ document.getElementById('register-form').addEventListener('submit', async functi
   }
 });
 
-// Hàm tạo ID ngẫu nhiên 6 chữ số
-function generateRandomId(length) {
-  let result = '';
-  const characters = '0123456789';
-  const charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
-
 // Toggle password visibility
-document.getElementById('toggle-password').addEventListener('click', function() {
+document.getElementById('toggle-password').addEventListener('click', function () {
   const passwordField = document.getElementById('new-password');
   const eyeIcon = document.getElementById('toggle-password');
 
