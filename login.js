@@ -18,21 +18,6 @@ const auth = firebase.auth();
 const database = firebase.database();
 
 // Tạo tài khoản admin nếu chưa có
-window.onload = function() {
-  // Kiểm tra xem tài khoản admin đã tồn tại trong Firebase chưa
-  database.ref('users/admin').once('value', (snapshot) => {
-    if (!snapshot.exists()) {
-      // Tạo tài khoản admin qua Firebase Authentication
-      auth.createUserWithEmailAndPassword('admin@example.com', 'admin922007') // Email và mật khẩu cho admin
-        .then(() => {
-          console.log('Tài khoản admin đã được tạo qua Firebase Authentication.');
-        })
-        .catch((error) => {
-          console.error('Lỗi khi tạo tài khoản admin:', error);
-        });
-    }
-  });
-};
 
 // Xử lý đăng nhập với tên đăng nhập và mật khẩu
 document.getElementById('login-form').addEventListener('submit', function(e) {
