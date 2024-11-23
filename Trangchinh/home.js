@@ -19,26 +19,38 @@ firebase.auth().onAuthStateChanged(async (user) => {
         try {
             console.log("Người dùng đã đăng nhập:", user);
 
-            // Lấy tên người dùng (sử dụng displayName hoặc phần trước @ của email)
-            const username = user.displayName || user.email.split('@')[0];
-
-            // Truy vấn dữ liệu từ Firebase Database
-            const snapshot = await firebase.database().ref('users/' + username).once('value');
+            // Truy vấn toàn bộ dữ liệu người dùng
+            const usersRef = firebase.database().ref('users');
+            const snapshot = await usersRef.once('value');
 
             if (snapshot.exists()) {
-                const userData = snapshot.val();
-                console.log("Dữ liệu người dùng từ Firebase:", userData);
+                const users = snapshot.val();
+                let userData = null;
 
-                // Hiển thị fullname và balance
-                document.getElementById("username").innerHTML = `Xin chào, <strong>${userData.fullname}</strong>`;
-                document.getElementById("balance").innerHTML = `Số dư: <strong>${Number(userData.balance).toLocaleString()} VNĐ</strong>`;
+                // Lọc dữ liệu theo email
+                for (const key in users) {
+                    if (users[key].email === user.email) {
+                        userData = users[key];
+                        break;
+                    }
+                }
+
+                if (userData) {
+                    console.log("Dữ liệu người dùng tìm thấy:", userData);
+
+                    // Hiển thị fullname và balance
+                    document.getElementById("username").innerHTML = `Xin chào, <strong>${userData.fullname}</strong>`;
+                    document.getElementById("balance").innerHTML = `Số dư: <strong>${Number(userData.balance).toLocaleString()} VNĐ</strong>`;
+                } else {
+                    console.error("Không tìm thấy dữ liệu người dùng trong cơ sở dữ liệu.");
+                    document.getElementById("username").innerHTML = "Xin chào, <strong>Người dùng</strong>";
+                    document.getElementById("balance").innerHTML = "Số dư: <strong>0 VNĐ</strong>";
+                }
             } else {
-                console.warn("Không tìm thấy dữ liệu người dùng trong cơ sở dữ liệu.");
-                document.getElementById("username").innerHTML = "Xin chào, <strong>Người dùng</strong>";
-                document.getElementById("balance").innerHTML = "Số dư: <strong>0 VNĐ</strong>";
+                console.error("Không có dữ liệu người dùng trong cơ sở dữ liệu.");
             }
         } catch (error) {
-            console.error("Lỗi khi lấy dữ liệu người dùng từ Firebase:", error);
+            console.error("Lỗi khi truy vấn dữ liệu Firebase:", error);
         }
     } else {
         // Nếu chưa đăng nhập, chuyển hướng về trang index.html
