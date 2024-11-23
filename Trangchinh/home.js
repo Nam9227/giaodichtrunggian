@@ -69,3 +69,12 @@ document.getElementById("logout-btn").addEventListener("click", async function (
         console.error("Lỗi khi đăng xuất:", error);
     }
 });
+
+// Chuyển hướng đến bena.html
+function goToPayment() {
+    window.location.href = "bena.html"; // Chuyển hướng đến bena.html
+}
+// Chuyển hướng đến bena.html
+function goToExchange() {
+    window.location.href = "benb.html"; // Chuyển hướng đến bena.html
+}
