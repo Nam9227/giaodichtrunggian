@@ -19,7 +19,7 @@ header {
   justify-content: center;
   align-items: center;
   position: absolute; /* Đặt vị trí tuyệt đối để nổi lên */
-  top: 0; /* Đặt logo ở phía trên cùng */
+  top: 15%; /* Đặt logo ở phía trên cùng */
   left: 0;
   right: 0;
   z-index: 10; /* Đảm bảo logo nổi lên trên bảng đăng nhập */
@@ -148,4 +148,11 @@ body {
   width: 30px; /* Kích thước hình con mắt */
   cursor: pointer;
   pointer-events: auto; /* Đảm bảo hình con mắt có thể nhấp được */
+}
+.logo {
+  max-width: 120px; /* Kích thước logo */
+  height: auto;
+  border-radius: 50%; /* Logo tròn */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Bóng đổ để nổi bật */
+  transform: translateY(-20%); /* Nổi lên 1/2 kích thước */
 }
