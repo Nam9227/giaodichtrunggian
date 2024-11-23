@@ -33,9 +33,6 @@ firebase.auth().onAuthStateChanged(user => {
             .catch(error => {
                 console.error("Lỗi khi truy vấn dữ liệu từ Firebase:", error);
             });
-    } else {
-        // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
-        window.location.href = "../login.html";
     }
 });
 
