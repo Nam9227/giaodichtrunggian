@@ -27,6 +27,13 @@ document.getElementById('register-form').addEventListener('submit', async functi
 
   if (username && password && email) {
     try {
+      // Kiểm tra xem tên người dùng đã tồn tại trong cơ sở dữ liệu chưa
+      const usernameSnapshot = await database.ref('users/' + username).once('value');
+      if (usernameSnapshot.exists()) {
+        alert('Tên người dùng đã tồn tại. Vui lòng chọn tên khác.');
+        return;
+      }
+
       // Đăng ký người dùng với Firebase Authentication
       const userCredential = await auth.createUserWithEmailAndPassword(email, password);
       const user = userCredential.user;
@@ -39,7 +46,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
         balance: 0           // Khởi tạo số dư mặc định
       });
 
-      alert('Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.');
+      alert('Đăng ký thành công! Bạn có thể đăng nhập bây giờ.');
       window.location.href = 'login.html'; // Chuyển đến trang đăng nhập
 
     } catch (error) {
