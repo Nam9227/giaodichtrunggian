@@ -10,7 +10,6 @@
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
-    <script src="home.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -67,18 +66,75 @@
         <p>&copy; 2024 Giao Dịch Trung Gian. All rights reserved.</p>
     </footer>
 
+    <!-- Script Firebase -->
     <script>
-        // Hàm bắt đầu
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDo5POI_MkDJyNE5y_7BIdfs-B2mj1iUBY",
+            authDomain: "csdl-web-giaodich.firebaseapp.com",
+            databaseURL: "https://csdl-web-giaodich-default-rtdb.firebaseio.com",
+            projectId: "csdl-web-giaodich",
+            storageBucket: "csdl-web-giaodich.appspot.com",
+            messagingSenderId: "834585121842",
+            appId: "1:834585121842:web:bca26240e1e5187792d82b",
+            measurementId: "G-5VDD2LKEKV"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Kiểm tra trạng thái đăng nhập
+        firebase.auth().onAuthStateChanged(async (user) => {
+            if (user) {
+                try {
+                    // Lấy thông tin user từ Authentication
+                    const username = user.displayName || user.email.split('@')[0]; // Sử dụng email nếu không có displayName
+                    console.log("Đăng nhập bởi:", username);
+
+                    // Truy vấn dữ liệu người dùng từ Firebase Database
+                    const snapshot = await firebase.database().ref('users/' + username).once('value');
+
+                    if (snapshot.exists()) {
+                        const userData = snapshot.val();
+
+                        // Hiển thị fullname và số dư
+                        document.getElementById("username").innerHTML = `Xin chào, <strong>${userData.fullname}</strong>`;
+                        document.getElementById("balance").innerHTML = `Số dư: <strong>${Number(userData.balance).toLocaleString()} VNĐ</strong>`;
+                    } else {
+                        console.error("Người dùng không tồn tại trong cơ sở dữ liệu.");
+                        document.getElementById("username").innerHTML = `Xin chào, <strong>Không xác định</strong>`;
+                        document.getElementById("balance").innerHTML = `Số dư: <strong>0 VNĐ</strong>`;
+                    }
+                } catch (error) {
+                    console.error("Lỗi khi truy vấn dữ liệu Firebase:", error);
+                }
+            } else {
+                // Nếu chưa đăng nhập, chuyển hướng về trang chủ
+                console.log("Người dùng chưa đăng nhập. Chuyển hướng về trang chủ.");
+                window.location.href = "../index.html";
+            }
+        });
+
+        // Xử lý nút đăng xuất
+        document.getElementById("logout-btn").addEventListener("click", async function () {
+            try {
+                await firebase.auth().signOut();
+                console.log("Đăng xuất thành công.");
+                window.location.href = "../index.html"; // Chuyển hướng về trang chủ
+            } catch (error) {
+                console.error("Lỗi khi đăng xuất:", error);
+            }
+        });
+
+        // Các chức năng khác
         function startNow() {
             console.log("Chức năng bắt đầu ngay!");
         }
 
-        // Chuyển đến trang trả tiền
         function goToPayment() {
             window.location.href = "payment.html";
         }
 
-        // Chuyển đến trang trao đổi
         function goToExchange() {
             window.location.href = "exchange.html";
         }
