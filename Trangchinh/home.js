@@ -8,42 +8,51 @@ const firebaseConfig = {
     messagingSenderId: "834585121842",
     appId: "1:834585121842:web:bca26240e1e5187792d82b",
     measurementId: "G-5VDD2LKEKV"
-  };
+};
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 // Kiểm tra trạng thái đăng nhập
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged(async (user) => {
     if (user) {
-        // Nếu đã đăng nhập, lấy thông tin user và hiển thị
-        const username = user.displayName || "unknownUser"; // Có thể tùy chỉnh lấy từ user
+        try {
+            // Lấy thông tin user và hiển thị
+            const username = user.displayName || user.email.split('@')[0]; // Dùng email nếu không có displayName
+            console.log("Đã đăng nhập với user:", username);
 
-        firebase.database().ref('users/' + username).once('value')
-            .then(snapshot => {
-                if (snapshot.exists()) {
-                    const userData = snapshot.val();
+            // Truy vấn dữ liệu từ Firebase Database
+            const snapshot = await firebase.database().ref('users/' + username).once('value');
 
-                    // Hiển thị fullname và balance
-                    document.getElementById("username").innerHTML = `Xin chào, <strong>${userData.fullname}</strong>`;
-                    document.getElementById("balance").innerHTML = `Số dư: <strong>${userData.balance.toLocaleString()} VNĐ</strong>`;
-                } else {
-                    console.error("Người dùng không tồn tại trong cơ sở dữ liệu.");
-                }
-            })
-            .catch(error => {
-                console.error("Lỗi khi truy vấn dữ liệu từ Firebase:", error);
-            });
+            if (snapshot.exists()) {
+                const userData = snapshot.val();
+                console.log("Dữ liệu người dùng:", userData);
+
+                // Hiển thị thông tin fullname và balance
+                document.getElementById("username").innerHTML = `Xin chào, <strong>${userData.fullname}</strong>`;
+                document.getElementById("balance").innerHTML = `Số dư: <strong>${Number(userData.balance).toLocaleString()} VNĐ</strong>`;
+            } else {
+                console.error("Người dùng không tồn tại trong cơ sở dữ liệu.");
+                document.getElementById("username").innerHTML = `Xin chào, <strong>Không xác định</strong>`;
+                document.getElementById("balance").innerHTML = `Số dư: <strong>0 VNĐ</strong>`;
+            }
+        } catch (error) {
+            console.error("Lỗi khi truy vấn dữ liệu từ Firebase:", error);
+        }
+    } else {
+        // Nếu chưa đăng nhập, chuyển hướng về trang chủ
+        console.log("Người dùng chưa đăng nhập. Chuyển hướng về trang chủ.");
+        window.location.href = "index.html"; // Trang chủ
     }
 });
 
 // Xử lý nút đăng xuất
-document.getElementById("logout-btn").addEventListener("click", function () {
-    firebase.auth().signOut()
-        .then(() => {
-            console.log("Đăng xuất thành công.");
-            window.location.href = "../login.html"; // Chuyển hướng về trang đăng nhập
-        })
-        .catch(error => {
-            console.error("Lỗi khi đăng xuất:", error);
-        });
+document.getElementById("logout-btn").addEventListener("click", async function () {
+    try {
+        await firebase.auth().signOut();
+        console.log("Đăng xuất thành công.");
+        window.location.href = "index.html"; // Chuyển hướng về trang chủ
+    } catch (error) {
+        console.error("Lỗi khi đăng xuất:", error);
+    }
 });
