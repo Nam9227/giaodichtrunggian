@@ -17,32 +17,33 @@ firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(async (user) => {
     if (user) {
         try {
-            // Lấy thông tin user và hiển thị
-            const username = user.displayName || user.email.split('@')[0]; // Dùng email nếu không có displayName
-            console.log("Đã đăng nhập với user:", username);
+            console.log("Người dùng đã đăng nhập:", user);
+
+            // Lấy tên người dùng (sử dụng displayName hoặc phần trước @ của email)
+            const username = user.displayName || user.email.split('@')[0];
 
             // Truy vấn dữ liệu từ Firebase Database
             const snapshot = await firebase.database().ref('users/' + username).once('value');
 
             if (snapshot.exists()) {
                 const userData = snapshot.val();
-                console.log("Dữ liệu người dùng:", userData);
+                console.log("Dữ liệu người dùng từ Firebase:", userData);
 
-                // Hiển thị thông tin fullname và balance
+                // Hiển thị fullname và balance
                 document.getElementById("username").innerHTML = `Xin chào, <strong>${userData.fullname}</strong>`;
                 document.getElementById("balance").innerHTML = `Số dư: <strong>${Number(userData.balance).toLocaleString()} VNĐ</strong>`;
             } else {
-                console.error("Người dùng không tồn tại trong cơ sở dữ liệu.");
-                document.getElementById("username").innerHTML = `Xin chào, <strong>Không xác định</strong>`;
-                document.getElementById("balance").innerHTML = `Số dư: <strong>0 VNĐ</strong>`;
+                console.warn("Không tìm thấy dữ liệu người dùng trong cơ sở dữ liệu.");
+                document.getElementById("username").innerHTML = "Xin chào, <strong>Người dùng</strong>";
+                document.getElementById("balance").innerHTML = "Số dư: <strong>0 VNĐ</strong>";
             }
         } catch (error) {
-            console.error("Lỗi khi truy vấn dữ liệu từ Firebase:", error);
+            console.error("Lỗi khi lấy dữ liệu người dùng từ Firebase:", error);
         }
     } else {
-        // Nếu chưa đăng nhập, chuyển hướng về trang chủ
-        console.log("Người dùng chưa đăng nhập. Chuyển hướng về trang chủ.");
-        window.location.href = "index.html"; // Trang chủ
+        // Nếu chưa đăng nhập, chuyển hướng về trang index.html
+        console.log("Người dùng chưa đăng nhập. Chuyển hướng về index.html.");
+        window.location.href = "index.html";
     }
 });
 
