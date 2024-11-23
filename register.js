@@ -24,6 +24,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
   const username = document.getElementById('new-username').value.trim(); // Tên người dùng
   const password = document.getElementById('new-password').value.trim();
   const email = document.getElementById('email').value.trim();
+  const fullname = document.getElementById('full-name').value.trim();
 
   if (username && password && email) {
     try {
@@ -43,6 +44,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
       await database.ref('users/' + username).set({
         email: email,        // Lưu email
         password: password,  // Lưu mật khẩu
+        fullname: fullname,  //luu tên
         balance: 0           // Khởi tạo số dư mặc định
       });
 
