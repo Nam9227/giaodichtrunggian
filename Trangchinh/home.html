@@ -6,6 +6,7 @@
     <title>Trang Chủ - Giao Dịch Trung Gian</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="home.css">
+    <!-- Thư viện Firebase -->
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
@@ -18,8 +19,9 @@
                 <img src="logo.jpg" alt="Logo" />
             </div>
             <div class="user-info">
-                <span id="username" class="user-name">Xin chào, <strong>username</strong></span>
-                <span id="balance" class="user-balance">Số dư: <strong>10,000,000 VNĐ</strong></span>
+                <!-- Thông tin người dùng -->
+                <span id="username" class="user-name">Xin chào, <strong>Đang tải...</strong></span>
+                <span id="balance" class="user-balance">Số dư: <strong>Đang tải...</strong></span>
             </div>
             <nav class="nav">
                 <ul>
@@ -36,7 +38,7 @@
             <div class="hero-content">
                 <h1>Chào Mừng Đến Với Giao Dịch Trung Gian</h1>
                 <p>An toàn, nhanh chóng và đáng tin cậy.</p>
-                <button class="cta-btn">Bắt Đầu Ngay</button>
+                <button class="cta-btn" onclick="startNow()">Bắt Đầu Ngay</button>
             </div>
         </section>
 
@@ -64,5 +66,22 @@
     <footer class="footer">
         <p>&copy; 2024 Giao Dịch Trung Gian. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Hàm bắt đầu
+        function startNow() {
+            console.log("Chức năng bắt đầu ngay!");
+        }
+
+        // Chuyển đến trang trả tiền
+        function goToPayment() {
+            window.location.href = "payment.html";
+        }
+
+        // Chuyển đến trang trao đổi
+        function goToExchange() {
+            window.location.href = "exchange.html";
+        }
+    </script>
 </body>
 </html>
