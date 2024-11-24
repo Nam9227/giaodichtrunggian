@@ -39,7 +39,7 @@ body {
 
 .nav ul li a,
 .nav ul li button {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     padding: 8px 12px;
     font-weight: 500;
@@ -152,4 +152,25 @@ body {
     background: #0056b3;
     color: #fff;
     margin-top: 20px;
+}
+#logout-btn {
+    background: #0056b3; /* Đỏ tươi */
+    color: #fff; /* Màu chữ trắng */
+    padding: 0px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#logout-btn:hover {
+    background: #004090; /* Đỏ đậm hơn khi hover */
+    transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+#logout-btn:active {
+    background: #0056b3; /* Đỏ đậm hơn khi bấm vào */
+    transform: scale(0.95); /* Thu nhỏ nhẹ khi bấm */
 }
