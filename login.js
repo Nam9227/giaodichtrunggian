@@ -17,8 +17,15 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 
-// Tạo tài khoản admin nếu chưa có
+// làm mới
+document.addEventListener("DOMContentLoaded", () => {
+  // Xóa trạng thái đăng nhập cũ
+  localStorage.removeItem("loggedIn");
+  localStorage.removeItem("email");
+  sessionStorage.clear();
 
+  console.log("Trạng thái cũ đã được làm mới.");
+});
 // Xử lý đăng nhập với tên đăng nhập và mật khẩu
 document.getElementById('login-form').addEventListener('submit', function(e) {
   e.preventDefault();
