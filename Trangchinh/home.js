@@ -77,3 +77,5 @@ function goToExchange() {
 function updateUserStatus(message) {
     document.getElementById("user-status").innerHTML = message;
 }
+
+   
