@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nạp Tiền - Giao Dịch Trung Gian</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nap.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo" />
+            </div>
+            <div class="user-info">
+                <span id="username" class="user-name">Xin chào, <strong>Đang tải...</strong></span>
+                <span id="balance" class="user-balance">Số dư: <strong>Đang tải...</strong></span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="https://zalo.me/0847019134" target="_blank">Hỗ Trợ</a></li>
+                    <li><a href="nap.html">Nạp Tiền</a></li>
+                    <li><a href="rut.html">Rút Tiền</a></li>
+                    <button id="logout-btn" class="logout-btn">Đăng Xuất</button>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="nap-tien">
+            <div class="container">
+                <h2 class="section-title">Nạp Tiền</h2>
+                <div class="qr-section">
+                    <h3>Quét QR code để nạp tiền</h3>
+                    <img src="qr.jpg" alt="QR Code Admin" class="qr-code">
+                    <p class="note">Nội dung chuyển khoản: <strong id="username-transfer"></strong></p>
+                </div>
+
+                <form id="nap-tien-form">
+                    <div class="form-group">
+                        <label for="so-tien">Số tiền đã chuyển (VNĐ):</label>
+                        <input type="number" 
+                               id="so-tien" 
+                               name="so-tien" 
+                               required 
+                               min="1000" 
+                               placeholder="Nhập số tiền">
+                    </div>
+                    <button type="submit" class="action-btn">Tôi đã thanh toán</button>
+                </form>
+
+                <div id="status-message" class="status-message"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Giao Dịch Trung Gian. All rights reserved.</p>
+    </footer>
+    <script src="nap.js"></script>
+</body>
+</html>
